@@ -4,7 +4,12 @@
 
 ## Overview
 
-Snowpro-Store is an e-commerce platform designed for selling snow sports equipment and accessories.
+Snowpro-Store is an e-commerce platform designed to sell snow sports equipment and accessories.
+
+## Screenshots:
+<img width="932" alt="Screenshot_1" src="https://github.com/user-attachments/assets/05502729-68b0-4b11-aa74-216ed6fc0e0a" />
+
+<img width="925" alt="Screenshot_2" src="https://github.com/user-attachments/assets/d3186e96-fd8b-419d-bc9d-b3bb209ce18c" />
 
 ## Features
 
