@@ -1,15 +1,18 @@
-import { ShoppingCart } from "@mui/icons-material";
+import { DarkMode, LightMode, ShoppingCart } from "@mui/icons-material";
 import {
   AppBar,
   Badge,
   Box,
   IconButton,
+  LinearProgress,
   List,
   ListItem,
   Toolbar,
   Typography,
 } from "@mui/material";
 import { NavLink } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../store/store";
+import { setDarkMode } from "./uiSlice";
 
 const midLinks = [
   { title: "Catalog", path: "/catalog" },
@@ -35,6 +38,9 @@ const navStyles = {
 };
 
 export default function NavBar() {
+  const { isLoading, darkMode } = useAppSelector((state) => state.ui);
+  const dispatch = useAppDispatch();
+
   return (
     <AppBar position="fixed">
       <Toolbar
@@ -44,7 +50,7 @@ export default function NavBar() {
           alignItems: "center",
         }}
       >
-        <Box display='flex' alignItems='center'>
+        <Box display="flex" alignItems="center">
           <img
             src="../../../public/logo.svg"
             alt="logo"
@@ -53,19 +59,23 @@ export default function NavBar() {
           <Typography component={NavLink} to="/" variant="h6" sx={navStyles}>
             SnowPro
           </Typography>
+
+          <IconButton onClick={() => dispatch(setDarkMode())}>
+            {darkMode ? <DarkMode /> : <LightMode sx={{ color: "yellow" }} />}
+          </IconButton>
         </Box>
 
         <Box>
           <List sx={{ display: "flex" }}>
             {midLinks.map(({ title, path }) => (
               <ListItem component={NavLink} to={path} key={path} sx={navStyles}>
-                {title} 
+                {title}
               </ListItem>
             ))}
           </List>
         </Box>
 
-        <Box display='flex' alignItems='center'>
+        <Box display="flex" alignItems="center">
           <IconButton size="large" sx={{ color: "inherit" }}>
             <Badge badgeContent="4" color="secondary">
               <ShoppingCart />
@@ -80,6 +90,11 @@ export default function NavBar() {
           </List>
         </Box>
       </Toolbar>
+      {isLoading && (
+        <Box sx={{ width: "100%" }}>
+          <LinearProgress color="secondary" />
+        </Box>
+      )}
     </AppBar>
   );
 }
