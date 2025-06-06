@@ -18,12 +18,13 @@ Snowpro-Store is an e-commerce platform designed to sell snow sports equipment a
 - Order management
 - Responsive design
 
-## Technologies Used
+## Tech Stack
 
 - .NET Core
 - React
 - Redux
 - SQL Server
+- ...
 
 ## Installation
 
